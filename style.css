@@ -1,0 +1,204 @@
+/* Fuentes personalizadas */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d0d15;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(64, 0, 128, 0.3) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 128, 255, 0.2) 0%, transparent 20%);
+    color: #e0e0ff;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    ), repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Títulos */
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff2a6d;
+    text-shadow: 0 0 10px rgba(255, 42, 109, 0.7),
+                 0 0 20px rgba(255, 42, 109, 0.5);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00f7ff, transparent);
+    margin: 0.5rem auto;
+    animation: glowLine 2s infinite alternate;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #00f7ff;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 8px rgba(0, 247, 255, 0.6);
+}
+
+/* Botones Cyberpunk */
+div {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 1rem 2rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #e0e0ff;
+    border: 2px solid;
+    border-color: #ff2a6d;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 42, 109, 0.5);
+    outline: none;
+}
+
+button:hover {
+    background-color: rgba(255, 42, 109, 0.2);
+    box-shadow: 0 0 25px rgba(255, 42, 109, 0.8);
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button#papel { border-color: #00f7ff; }
+button#papel:hover { background-color: rgba(0, 247, 255, 0.2); box-shadow: 0 0 25px rgba(0, 247, 255, 0.8); }
+
+button#tijera { border-color: #ffcc22; }
+button#tijera:hover { background-color: rgba(255, 204, 34, 0.2); box-shadow: 0 0 25px rgba(255, 204, 34, 0.8); }
+
+/* Resultado */
+#print {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+    padding: 1.5rem 2rem;
+    background: rgba(10, 10, 20, 0.7);
+    border: 2px solid #00f7ff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+    max-width: 80%;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+/* Animaciones */
+@keyframes glowLine {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 20px rgba(0, 247, 255, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(0, 247, 255, 0.8); }
+    100% { box-shadow: 0 0 20px rgba(0, 247, 255, 0.4); }
+}
+
+/* Efecto glitch (opcional para títulos) */
+h2.glitch {
+    position: relative;
+}
+
+h2.glitch::before,
+h2.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h2.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff2a6d;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+h2.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00f7ff;
+    clip: rect(24px, 450px, 36px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(24px, 9999px, 21px, 0); }
+    20% { clip: rect(14px, 9999px, 51px, 0); }
+    40% { clip: rect(64px, 9999px, 31px, 0); }
+    60% { clip: rect(44px, 9999px, 1px, 0); }
+    80% { clip: rect(84px, 9999px, 71px, 0); }
+    100% { clip: rect(34px, 9999px, 41px, 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(54px, 9999px, 51px, 0); }
+    20% { clip: rect(64px, 9999px, 11px, 0); }
+    40% { clip: rect(84px, 9999px, 71px, 0); }
+    60% { clip: rect(14px, 9999px, 61px, 0); }
+    80% { clip: rect(44px, 9999px, 31px, 0); }
+    100% { clip: rect(74px, 9999px, 91px, 0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1rem; }
+    button { padding: 0.8rem 1.5rem; font-size: 1rem; }
+}
